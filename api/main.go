@@ -15,7 +15,7 @@ import (
 
 // Definir estructuras FUERA de main()
 type User struct {
-	ID       int32  `json:"id"`
+	ID       int64  `json:"id"`
 	Email    string `json:"email"`
 	Password string `json:"password"`
 }
@@ -82,7 +82,7 @@ func main() {
 			return
 		}
 
-		var id int32
+		var id int64
 		err = db.QueryRow("INSERT INTO users (email, password) VALUES ($1, $2) RETURNING id",
 			req.Email, req.Password).Scan(&id)
 		if err != nil {
