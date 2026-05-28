@@ -89,7 +89,7 @@ func main() {
 			c.JSON(http.StatusInternalServerError, gin.H{"error": "Error al crear el usuario " + err.Error()})
 			return
 		}
-		c.JSON(http.StatusOK, gin.H{"id": id, "email": req.Email, "password": req.Password})
+		c.JSON(http.StatusCreated, gin.H{"id": id, "email": req.Email, "password": req.Password})
 	})
 
 	r.DELETE("/users/:id", func(c *gin.Context) {
